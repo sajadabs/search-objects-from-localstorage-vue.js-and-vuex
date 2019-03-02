@@ -2,6 +2,11 @@
     <div id="show">
         <b-row>
             <b-col xl="12" cols="6">
+                <b-card-header header-bg-variant="light" header-text-variant="dark" class="pt-2 mt-4">
+                    اتاق های تاریخ : 10/12/1397
+                </b-card-header>
+            </b-col>
+            <b-col xl="12" cols="6">
                 <b-row class="pt-4">
                     <b-col lg="6" md="6" sm="12">
                         <b-card-header header-bg-variant="dark" header-text-variant="white" class="pt-2">
