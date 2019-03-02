@@ -61,3 +61,28 @@ html ,body , #app{
     display: block !important;
     margin: 3px 0 !important;
 }
+.el-date-table td.end-date div {
+    margin-left: 5px;
+    margin-right: 0px !important;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.el-date-table td.start-date div {
+    margin-right: 5px;
+    margin-left: 0px !important;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+.el-input__inner{
+    width: 100% !important;
+}
+[class*=el-col-] {
+    float: right !important;
+}
+.el-autocomplete {
+     display: block !important;
+}
