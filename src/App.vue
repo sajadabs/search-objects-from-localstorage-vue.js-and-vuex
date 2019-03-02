@@ -1,7 +1,7 @@
 <template>
-    <div id="app" class="container">
-        <RoomRate/>
-    </div>
+  <div id="app" class="container">
+    <RoomRate/>
+  </div>
 </template>
 
 <script>
@@ -13,4 +13,3 @@
         }
     }
 </script>
-
