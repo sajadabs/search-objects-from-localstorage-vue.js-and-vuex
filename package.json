@@ -13,9 +13,13 @@
     "bootstrap-vue": "^2.0.0-rc.13",
     "el-moment": "^1.0.0",
     "element-ui": "^2.4.5",
+    "moment-jalaali": "^0.8.3",
     "vue": "^2.5.2",
     "vue-hotel-datepicker": "^2.6.3",
-    "vue-moment-jalaali": "^2.0.0"
+    "vue-moment-jalaali": "^2.0.0",
+    "vue-persian-datetime-picker": "^2.0.0",
+    "vuex": "^3.1.0",
+    "vuex-persist": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
