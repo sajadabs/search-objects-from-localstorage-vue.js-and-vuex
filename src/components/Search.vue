@@ -7,9 +7,9 @@
                         header-text-variant="white"
                         header-tag="header"
                         header-bg-variant="dark"
-                        class="line-lg">
+                        class="line-lg mt-4">
                     <el-row :gutter="10">
-                        <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
+                        <el-col :xs="24" :sm="7" :md="7" :lg="7" :xl="7">
                             <el-autocomplete
                                     v-model="state4"
                                     :fetch-suggestions="querySearchAsync"
@@ -17,21 +17,25 @@
                                     @select="handleSelect">
                             </el-autocomplete>
                         </el-col>
-                        <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
-                            <el-moment format="MMMM Do YYYY, h:mm:ss a">
-                                <el-date-picker
-                                        v-model="value7"
-                                        type="daterange"
-                                        range-separator="تا"
-                                        start-placeholder="تاریخ شروع"
-                                        end-placeholder="تاریخ پایان"
-                                        value-format="timestamp">
-                                </el-date-picker>
-                            </el-moment>
-                            <!--<date-picker></date-picker>-->
-
+                        <el-col :xs="24" :sm="7" :md="7" :lg="7" :xl="7">
+                            <date-picker
+                                    label="تاریخ شروع"
+                                    :color="'#909399'"
+                                    v-model="date.start"
+                                    format="YYYY-MM-DD"
+                                    display-format="dddd jDD jMMMM jYYYY">
+                            </date-picker>
                         </el-col>
-                        <el-col :xs="24" :sm="4" :md="4" :lg="4" :xl="4">
+                        <el-col :xs="24" :sm="7" :md="7" :lg="7" :xl="7">
+                            <date-picker
+                                    label="تاریخ پایان"
+                                    :color="'#909399'"
+                                    v-model="date.end"
+                                    format="YYYY-MM-DD"
+                                    display-format="dddd jDD jMMMM jYYYY">
+                            </date-picker>
+                        </el-col>
+                        <el-col :xs="24" :sm="3" :md="3" :lg="3" :xl="3">
                             <el-button style="width: 100%" type="info">جستجو</el-button>
                         </el-col>
                     </el-row>
@@ -46,17 +50,13 @@
         name: 'Search',
         data() {
             return {
+                date : {
+                    start : '',
+                    end : ''
+                },
                 links: [],
                 state4: '',
                 timeout: null,
-                value7: '',
-                form: {
-                    email: '',
-                    name: '',
-                    food: null,
-                    checked: []
-                },
-                foods: [{text: 'Select One', value: null}, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
             }
         },
         methods: {
