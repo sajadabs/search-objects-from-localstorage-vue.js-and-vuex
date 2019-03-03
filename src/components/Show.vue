@@ -3,7 +3,7 @@
         <b-row>
             <b-col xl="12" cols="6">
                 <b-card-header header-bg-variant="light" header-text-variant="dark" class="pt-2 mt-4">
-                    اتاق های تاریخ : 10/12/1397
+                    اتاق های تاریخ : 1397/12/10
                 </b-card-header>
             </b-col>
             <b-col xl="12" cols="6">
