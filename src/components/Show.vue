@@ -3,7 +3,8 @@
         <b-row>
             <b-col xl="12" cols="6">
                 <b-card-header header-bg-variant="light" header-text-variant="dark" class="pt-2 mt-4">
-                    اتاق های تاریخ : 1397/12/10
+                    اتاق های تاریخ :
+                    {{day}}
                 </b-card-header>
             </b-col>
             <b-col xl="12" cols="6">
@@ -175,8 +176,16 @@
 <script>
     export default {
         name: 'Show',
+        props:[
+            'propId' , 'day'
+        ],
         data() {
             return {}
+        },
+        computed: {
+            hotels() {
+                return this.$store.getters.hotels
+            }
         }
     }
 </script>
