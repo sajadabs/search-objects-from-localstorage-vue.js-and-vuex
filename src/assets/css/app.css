@@ -86,3 +86,12 @@ html ,body , #app{
 .el-autocomplete {
      display: block !important;
 }
+.el-date-range-picker {
+    width: 900px !important;
+}
+.vpd-input-group , .vpd-input-group input{
+    font-size: 0.8rem;
+}
+.el-button{
+    padding: 11px 20px !important;
+}
