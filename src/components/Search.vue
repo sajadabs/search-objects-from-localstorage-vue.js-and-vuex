@@ -11,18 +11,19 @@
                     <el-row :gutter="10">
                         <el-col :xs="24" :sm="7" :md="7" :lg="7" :xl="7">
                             <el-autocomplete
-                                    v-model="state4"
+                                    v-model="hotel"
                                     :fetch-suggestions="querySearchAsync"
                                     placeholder="هتل مورد نظر را انتخاب کنید."
-                                    @select="handleSelect">
+                                    @select="selectedId"
+                            >
                             </el-autocomplete>
                         </el-col>
                         <el-col :xs="24" :sm="7" :md="7" :lg="7" :xl="7">
                             <date-picker
                                     label="تاریخ شروع"
                                     :color="'#909399'"
-                                    v-model="date.start"
-                                    format="YYYY-MM-DD"
+                                    v-model="searchData.startDate"
+                                    format="X"
                                     display-format="dddd jDD jMMMM jYYYY">
                             </date-picker>
                         </el-col>
@@ -30,13 +31,13 @@
                             <date-picker
                                     label="تاریخ پایان"
                                     :color="'#909399'"
-                                    v-model="date.end"
-                                    format="YYYY-MM-DD"
+                                    v-model="searchData.endDate"
+                                    format="X"
                                     display-format="dddd jDD jMMMM jYYYY">
                             </date-picker>
                         </el-col>
                         <el-col :xs="24" :sm="3" :md="3" :lg="3" :xl="3">
-                            <el-button style="width: 100%" type="info">جستجو</el-button>
+                            <el-button style="width: 100%" type="info" @click="sendData">جستجو</el-button>
                         </el-col>
                     </el-row>
                 </b-card>
@@ -50,47 +51,38 @@
         name: 'Search',
         data() {
             return {
-                date : {
-                    start : '',
-                    end : ''
+                searchData : {
+                    startDate : null,
+                    endDate : null,
+                    propertyId: null
                 },
-                links: [],
-                state4: '',
+                hotel: '',
+                hotelsArray: [],
                 timeout: null,
             }
         },
         methods: {
-            loadAll() {
-                return [
-                    {"value": "vue", "link": "https://github.com/vuejs/vue"},
-                    {"value": "element", "link": "https://github.com/ElemeFE/element"},
-                    {"value": "cooking", "link": "https://github.com/ElemeFE/cooking"},
-                    {"value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui"},
-                    {"value": "vuex", "link": "https://github.com/vuejs/vuex"},
-                    {"value": "vue-router", "link": "https://github.com/vuejs/vue-router"},
-                    {"value": "babel", "link": "https://github.com/babel/babel"}
-                ];
-            },
             querySearchAsync(queryString, cb) {
-                var links = this.links;
-                var results = queryString ? links.filter(this.createFilter(queryString)) : links;
-
+                var hotels = this.hotelsArray;
                 clearTimeout(this.timeout);
                 this.timeout = setTimeout(() => {
-                    cb(results);
+                    cb(hotels);
                 }, 3000 * Math.random());
             },
-            createFilter(queryString) {
-                return (link) => {
-                    return (link.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-                };
+            selectedId(item) {
+                this.searchData.propertyId = item.id;
             },
-            handleSelect(item) {
-                console.log(item);
+            sendData(event){
+                this.$emit('searchData' , this.searchData)
             }
         },
         mounted() {
-            this.links = this.loadAll();
+            this.hotelsArray = this.hotels;
+        },
+        computed: {
+            hotels() {
+                return this.$store.getters.hotels
+            }
         }
     }
 </script>
