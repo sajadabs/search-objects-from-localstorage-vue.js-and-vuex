@@ -24,6 +24,7 @@
                                     :color="'#909399'"
                                     v-model="searchData.startDate"
                                     format="X"
+                                    :auto-submit="true"
                                     display-format="dddd jDD jMMMM jYYYY">
                             </date-picker>
                         </el-col>
@@ -33,6 +34,7 @@
                                     :color="'#909399'"
                                     v-model="searchData.endDate"
                                     format="X"
+                                    :auto-submit="true"
                                     display-format="dddd jDD jMMMM jYYYY">
                             </date-picker>
                         </el-col>
@@ -51,9 +53,9 @@
         name: 'Search',
         data() {
             return {
-                searchData : {
-                    startDate : null,
-                    endDate : null,
+                searchData: {
+                    startDate: null,
+                    endDate: null,
                     propertyId: null
                 },
                 hotel: '',
@@ -63,17 +65,13 @@
         },
         methods: {
             querySearchAsync(queryString, cb) {
-                var hotels = this.hotelsArray;
-                clearTimeout(this.timeout);
-                this.timeout = setTimeout(() => {
-                    cb(hotels);
-                }, 3000 * Math.random());
+                cb(this.hotelsArray);
             },
             selectedId(item) {
                 this.searchData.propertyId = item.id;
             },
-            sendData(event){
-                this.$emit('searchData' , this.searchData)
+            sendData() {
+                this.$emit('searchData', this.searchData)
             }
         },
         mounted() {
