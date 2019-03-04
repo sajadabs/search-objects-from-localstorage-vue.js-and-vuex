@@ -20,7 +20,7 @@
             return {
                 propertyId: null,
                 date: {},
-                days: [],
+                days: {},
             }
         },
         methods: {
@@ -29,21 +29,12 @@
                 this.date.end = parseInt(searchData.endDate);
                 this.propertyId = searchData.propertyId;
                 this.days = [];
-                var date = this.date.start;
+                let date = this.date.start;
                 while (date <= this.date.end) {
-                    this.days.push(moment.unix(date).format("jYYYY/jMM/jDD"));
+                    this.days.push({date: moment.unix(date).format("jYYYY/jMM/jDD"), timestamp: date});
                     date = date + 86400;
                 }
             }
-        },
-        computed: {
-            roomTypes() {
-                return this.$store.getters.roomTypes
-            },
-            roomRates() {
-                return this.$store.getters.roomRates
-            }
         }
-
     }
 </script>
